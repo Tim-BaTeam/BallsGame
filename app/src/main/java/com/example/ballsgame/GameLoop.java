@@ -70,12 +70,11 @@ public class GameLoop extends Thread{
                         e.printStackTrace();
                     }
                 }
-
             }
 
             // Pause game loop to not exceed target UPS
             elapsedTime = System.currentTimeMillis() - startTime;
-            sleepTime = (long) ((updateCount * UPS_PERIOD) - elapsedTime);
+            sleepTime = (long) (updateCount*UPS_PERIOD - elapsedTime);
             if (sleepTime > 0) {
                 try {
                     sleep(sleepTime);
@@ -92,7 +91,7 @@ public class GameLoop extends Thread{
                 sleepTime = (long) ((updateCount * UPS_PERIOD) - elapsedTime);
             }
 
-            // Calculate average UPS an FPS
+            // Calculate average UPS and FPS
             elapsedTime = System.currentTimeMillis() - startTime;
             if (elapsedTime >= 1000) {
                 avarageUPS = updateCount / (1E-3 * elapsedTime);
